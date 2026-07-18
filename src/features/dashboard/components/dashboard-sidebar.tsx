@@ -59,6 +59,7 @@ function NavSection({ label, items, pathname }: NavSectionProps) {
                 }
                 onClick={item.onClick}
                 tooltip={item.title}
+                className="h-9 px-3 py-2 text-[13px] tracking-tight font-medium border border-transparent data-[active=true]:border-border data-[active=true]:shadow-[0px_1px_1px_0px_rgba(44,54,53,0.03),inset_0px_0px_0px_2px_white]"
               >
                 {item.url ? (
                   <Link href={item.url}>
@@ -148,6 +149,33 @@ export function DashboardSidebar() {
           </span>
           <SidebarTrigger className="ml-auto lg:hidden" />
         </div>
+        <SidebarMenu>
+            <SidebarMenuItem>
+               <OrganizationSwitcher
+                 hidePersonal
+                 fallback={
+                    <Skeleton 
+                      className="h-8.5 w-full group-data-[collapsible=icon]:size-8 rounded-md border bg-white"
+                    />
+                 }
+                 appearance={{
+                    elements: {
+                        rootBox:
+                          "w-full! group-data-[collapsible=icon]:w-auto! group-data-[collapsible=icon]:flex! group-data-[collapsible=icon]:justify-center!",
+                        organizationSwitcherTrigger:
+                          "w-full! justify-between! bg-white! border! border-border! rounded-md! pl-1! pr-2! py-1! gap-3! group-data-[collapsible=icon]:w-auto! group-data-[collapsible=icon]:p-1! shadow-[0px_1px_1.5px_0px_rgba(44,54,53,0.03)]!",
+                        organizationPreview: "gap-2!",
+                        organizationPreviewAvatarBox: "size-6! rounded-sm!",
+                        organizationPreviewTextContainer:
+                          "text-xs! tracking-tight! font-medium! text-foreground! group-data-[collapsible=icon]:hidden!",
+                        organizationPreviewMainIdentifier: "text-[13px]!",
+                        organizationSwitcherTriggerIcon:
+                          "size-4! text-sidebar-foreground! group-data-[collapsible=icon]:hidden!",
+                    }
+                 }}
+               />
+            </SidebarMenuItem>
+        </SidebarMenu>
       </SidebarHeader>
       <div className="border-b border-dashed border-border" />
       <SidebarContent>
@@ -158,6 +186,7 @@ export function DashboardSidebar() {
           pathname={pathname}
         />
       </SidebarContent>
+      <SidebarRail />
     </Sidebar>
   )
 }
