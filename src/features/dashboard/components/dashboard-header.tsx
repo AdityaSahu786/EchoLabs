@@ -15,8 +15,22 @@ export function DashboardHeader() {
                 <p className="text-sm text-muted-foreground">Nice to see you.</p>
                 <h1 className="text-2xl lg:text-3xl font-semibold tracking-tight">
                     {isLoaded ? (user?.fullName ?? user?.firstName ?? "there"): "..."}
-
                 </h1>
+            </div>
+
+            <div className="lg:flex items-center gap-3 hidden">
+                <Button variant="outline" size="sm" asChild>
+                <Link href="mailto:sahuadi786183@gmail.com">
+                   <ThumbsUp />
+                   <span className="hidden lg:block">Feedback</span>
+                </Link>
+            </Button>
+            <Button variant="outline" size="sm" asChild>
+                <Link href="mailto:sahuadi786183@gmail.com">
+                   <ThumbsUp />
+                   <span className="hidden lg:block">Need help?</span>
+                </Link>
+            </Button>
             </div>
         </div>
     )
